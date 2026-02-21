@@ -1,22 +1,14 @@
-def string(a: list[int], b: int):
-    c = 0
-    d = len(a) - 1
+def factorial(n: int):
+    if n <= 1:
+        return 1
+    result = n * factorial(n - 1)
+    return result
 
-    count = 0
+    # result = 1
+    # for i in range(1, n + 1):
+    #     result = result * i
 
-    while c <= d:
-        count += 1
-        e = (c + d) // 2
-        print(count, e)
-
-        if a[e] == b:
-            return e
-        elif a[e] > b:
-            d = e - 1
-        else:
-            c = e + 1
-
-    return -1
+    # return result
 
 
-print(string([1, 2, 3, 4, 7, 8, 10, 12], 7))
+print(factorial(5))
