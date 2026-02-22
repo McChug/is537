@@ -28,6 +28,14 @@ This project comes from LeetCode #22. I started the project by drawing out all t
 
 This was an incredibly satisying problem to finally solve, and a lot of fun to work on throughout.
 
+### Group Anagrams
+
+This problem ended up being quite a bit simpler than my others. By using a hash table with keys set by taking a string through Python's native `sorted()` function, I was able to very efficiently populate the table and check to see if strings were anagrams.
+
+### Remove Outer Parentheses
+
+We started this algorithm in class and I thougt immediately I had an idea that would work for it, but as I tried to write out the code quickly I ended up running into errors. I ended up coming back to the problem after class and was happy to see that my intuition on how it could be solved did work, but it took a little more effort to get it right. Basically, my code works because, assuming that each string of parentheses is valid, I can always delete the first index, and track that I've seen one opening parenthesis. After that, I can increment or decrement my counter and remove the next closing parenthesis when the counter hits 0. It was a simple concept and worked in O(N) time!
+
 ### Add Two Numbers Without Recursion
 
 I was looking for some recursion practice and found this problem (Leetcode #2) right at the top of the recursion list. Without much recursion practice yet, I kept going back to bottom-up solutions as I tried to think through the problem, so I decided to start with a non-recursive solution, which went well. I hadn't went over linked lists in class yet but had some minimal understanding of them. I ended up reading up some on best practices for working with them because I just about had all my code's logic down except for actually generating the result in a linked list. I found out about things like starting with dummy heads, or sentinel nodes, and using a temporary variable to overwrite my list, and after implementing the fix to how I was writing the nodes, the code worked! I'll aim to figure out the recursive solution, too, but this ended up being a great introduction to working with linked lists.
