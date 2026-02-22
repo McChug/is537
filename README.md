@@ -6,7 +6,7 @@ This repo contains a collection of personal projects I have completed (largely i
 
 ## Projects
 
-### Valid Sudoku
+### 1. Valid Sudoku
 
 My first project for this class ended up being a lot more difficult than I thought, but it was a lot of fun to think through! I figured that if a went for an algorithm with a space complexity of O(N), then I could make the time complexity O(N) as well. (Or O(N^2) for each of these depending on if you consider N to be 9 or 9x9).
 
@@ -14,7 +14,7 @@ By storing what already exists in each column, row, and subgrid, I could just lo
 
 Also, as a side note, it was important to me to make an algorithm that could work with any size board, as long as the length and width were the same and could be square rooted. This was just for fun since I didn't want to hard-code 9's, and I'm happy with how it turned out!
 
-### Rotate Image
+### 2. Rotate Image
 
 When I started on this algorithm, it looked a whole lot like a sudoku board to me, and since I had just spent so much time and mental energy trying to come up with all the patterns and sequences I could on these boards, I thought that I would be able to solve this problem intuitively. I was very wrong.
 
@@ -22,21 +22,21 @@ I originally intialized my two for loops with variables named i and j, and my co
 
 I was pleased to see after the fact that these names are used in solutions posted online. It really was in coming up with these names that I could finally see the pattern that could perform a rotation not just on a 3x3 grid, but also a 4x4 and 5x5 and on.
 
-### Generate Parentheses
+### 3. Generate Parentheses
 
 This project comes from LeetCode #22. I started the project by drawing out all the possible valid combinations of parentheses and trying to figure out any patterns that existed. After way too many drawing and way too much thinking, I decided that I would take a step back and instead make an algorithm that could generate every possible combination of parentheses and only hold on to the good ones. It took some thinking since I've never written a script like this before, but after a nice break from the project it finally clicked with me that since there are only two possible characters, I could treat opening and closing parentheses as if they were ones and zeros and from there generate each combination as if I was just converting decimal to binary. From there I coded my script and just ran into one more issue. I set up my loop as n^2 rather than 2^n, so my code was skipping several valid solutions. After some debugging, that truth finally hit my like a bag of boulders and then I got the code working!
 
 This was an incredibly satisying problem to finally solve, and a lot of fun to work on throughout.
 
-### Group Anagrams
+### 4. Group Anagrams
 
 This problem ended up being quite a bit simpler than my others. By using a hash table with keys set by taking a string through Python's native `sorted()` function, I was able to very efficiently populate the table and check to see if strings were anagrams.
 
-### Remove Outer Parentheses
+### 5. Remove Outer Parentheses
 
 We started this algorithm in class and I thougt immediately I had an idea that would work for it, but as I tried to write out the code quickly I ended up running into errors. I ended up coming back to the problem after class and was happy to see that my intuition on how it could be solved did work, but it took a little more effort to get it right. Basically, my code works because, assuming that each string of parentheses is valid, I can always delete the first index, and track that I've seen one opening parenthesis. After that, I can increment or decrement my counter and remove the next closing parenthesis when the counter hits 0. It was a simple concept and worked in O(N) time!
 
-### Add Two Numbers Without Recursion
+### 6. Add Two Numbers Without Recursion
 
 I was looking for some recursion practice and found this problem (Leetcode #2) right at the top of the recursion list. Without much recursion practice yet, I kept going back to bottom-up solutions as I tried to think through the problem, so I decided to start with a non-recursive solution, which went well. I hadn't went over linked lists in class yet but had some minimal understanding of them. I ended up reading up some on best practices for working with them because I just about had all my code's logic down except for actually generating the result in a linked list. I found out about things like starting with dummy heads, or sentinel nodes, and using a temporary variable to overwrite my list, and after implementing the fix to how I was writing the nodes, the code worked! I'll aim to figure out the recursive solution, too, but this ended up being a great introduction to working with linked lists.
 
