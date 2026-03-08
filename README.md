@@ -45,3 +45,11 @@ As far as the adding logic went for this algorithm, I just kept a running carry 
 ### 7. Add Two Numbers With Recursion
 
 After getting my feel for linked lists in my previous algorithm for this problem, the recursive solution wasn't too bad to solve. Because I only ever make one recursive call at most in the function, no memoization or dynamic programming was needed to keep the time efficiency for this the same at O(N). And by implementing the recursive generation of nodes, I didn't have to do any odd logic with a dummy node at the head, so this ended up being a cleaner solution in my opinion. One interesting gotcha at the end of solving this was that I didn't handle the last carry bit if the last recursive call had a carry of 1, so I created a second base case to handle this.
+
+### 8. Shipping With Minimum Weight Capacity
+
+I started this algorithm as part of class and did not make it far. When encouraged to continue working on it, I still felt unsure about how to proceed, but the hints from class ended up helping me to solve it without too much difficulty. I had originally been attempting to find some kind of pattern that would let me loop through the list and return the minimum capacity, but was I shifted to just building a validator function that could return whether any given capacity would be good, I realized it wasn't too difficult. One thing worth noting is the binary search in this script. Instead of starting tests at a capacity of 0 or 1, I use built-in python functions to quickly return the maximum weight of any day and the total weight of the entire list's items, and these serve as the left and right parameters to a binary search that allow me to find the least valid capacity in O(logN) time.
+
+### 9. Next Permutation
+
+This problem seemed straightfoward when I began, but I kept getting caught up in small errors like my loops being off by one iteration, or my bubble sort starting and ending at the wrong values. Being able to work through all of these helped me build my intuition on loops. In the end, my algorithm was not a very sophisticated one, with a Big O of O(N^2\*2). I would love to revist this problem in the future because I believe that faster methods are possible.
