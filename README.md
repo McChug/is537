@@ -2,7 +2,7 @@
 
 ## About
 
-This repo contains a collection of personal projects I have completed (largely in the form of LeetCode problems or similar types of coding challenges.
+This repo contains a collection of personal projects I have completed (largely in the form of LeetCode problems or similar types of coding challenges).
 
 ## Projects
 
@@ -53,3 +53,15 @@ I started this algorithm as part of class and did not make it far. When encourag
 ### 9. Next Permutation
 
 This problem seemed straightfoward when I began, but I kept getting caught up in small errors like my loops being off by one iteration, or my bubble sort starting and ending at the wrong values. Being able to work through all of these helped me build my intuition on loops. In the end, my algorithm was not a very sophisticated one, with a Big O of O(N^2\*2). I would love to revist this problem in the future because I believe that faster methods are possible.
+
+### 10. Linked List Cycle II
+
+After going over in class how to detect cycles in linked lists with Floyd's tortoise and hare algorithm, I wanted to see how I might be able to find an effecient solution to LeetCode 142 as well. LeetCode gave a challenge in the problem description to solve with O(1) memory, so that was my goal with my solution, though it did take O(N^2) time. I used the tortoise and hare algorithm to define a "stop node" that was proven to be somewhere in the loop, and then I ran a nested loop through this linked list where I would break if I got to the stop node twice before seeing my two indexes reference the same node.
+
+After solving this, I found some creative solutions online that worked more effeciently and I tried to learn one algorithm in specific from a solution I found interesting, but I'm pretty happy that I was able to come up with my working solution, even if less efficient.
+
+### 11. Balanced Binary Tree
+
+I started this problem by writing a regular getHeight() function, and then I added my check on each left_height and right_height calculation I did to make sure they were balanced. It took me a lot of thinking to come up with a solution for what to return in that base case, though. I tried adding another parameter called balanced that held a boolean but realized that it would never be read if I only changed it after making my recursive calls.
+
+Finally, I settled on a hacky solution of returning -100 when the tree was out of balance, and then I ended my function by checking whether the result of getBalancedHeight() was greater than 0. This passed all of LeetCode 110's cases and worked in O(N) time, but I wasn't happy with the hacky solution. I went online and saw that a more sophisticated solution just added checks to see if the left and right heights were also -1 before returning -1. I implemented this by only changing a couple lines of code.

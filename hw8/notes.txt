@@ -1,0 +1,49 @@
+--------- space of o(n):
+
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        stack = []
+        cur = head
+
+        if head.next == None:
+            return True
+
+        while cur:
+            if len(stack) > 0 and stack[-1] == cur.val:
+                stack.pop()
+            else:
+                stack.append(cur.val)
+
+            cur = cur.next
+
+        if len(stack) == 0:
+            return True
+
+        return False
+        
+--------- time of o(n^2):
+
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        length = 0
+        cur = head
+        while cur:
+            cur = cur.next
+            length += 1
+
+        stop = length // 2
+        left = head
+        while length > stop:
+            right = head
+            end_val = 0
+            length -= 1
+
+            for i in range(length):
+                right = right.next
+            
+            if right.val != left.val:
+                return False
+            
+            left = left.next
+
+        return True
