@@ -1,8 +1,57 @@
+const SPACE_CHAR = " ";
+const CHILDREN_LINE_CHAR = "┴";
+const LINE_CHAR = "─";
+const LEFT_END_CHAR = "┌";
+const RIGHT_END_CHAR = "┐";
+// const NODE_CHARS = "☐☐☐";
+
 class TreeNode {
   constructor(value) {
     this.value = value;
     this.left = null;
     this.right = null;
+  }
+}
+
+class LinkedListNode {
+  constructor(value, next = null) {
+    this.value = value;
+    this.next = next;
+  }
+}
+
+class Queue {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+
+  enqueue(node) {
+    if (this.head === null) {
+      this.head = node;
+      this.tail = node;
+    } else {
+      this.tail.next = node;
+      this.tail = node;
+    }
+
+    this.length += 1;
+  }
+
+  dequeue() {
+    const result = this.head;
+
+    if (this.head.next) {
+      this.head = this.head.next;
+    } else {
+      this.head = null;
+      this.tail = null;
+    }
+
+    this.length -= 1;
+
+    return result;
   }
 }
 
@@ -46,7 +95,9 @@ function breadthFirstPrettyPrint(root) {
   const maxHeight = getMaxHeight(root);
   convertToCompleteBinaryTree(root, maxHeight);
 
-  const queue = [root];
+  const queue = new Queue();
+  queue.enqueue(root);
+
   let levelHeight = maxHeight;
 
   while (queue.length > 0) {
@@ -54,11 +105,11 @@ function breadthFirstPrettyPrint(root) {
     const levelValues = [];
 
     for (let i = 0; i < levelSize; i++) {
-      const node = queue.shift();
+      const node = queue.dequeue();
       levelValues.push(node.value);
 
-      if (node.left) queue.push(node.left);
-      if (node.right) queue.push(node.right);
+      if (node.left) queue.enqueue(node.left);
+      if (node.right) queue.enqueue(node.right);
     }
 
     if (levelHeight !== maxHeight) {
@@ -72,18 +123,15 @@ function breadthFirstPrettyPrint(root) {
 }
 
 function logTreeLevelCharacters(values, height) {
-  //   const NODE_CHARS = "☐☐☐";
-  const SPACE_CHAR = " ";
-
   const firstSpacing = 2 ** height - 2;
   const betweenSpacing = 2 ** (height + 1) - 3;
 
   let line = "";
   line += SPACE_CHAR.repeat(firstSpacing);
 
-  while (values.length > 0) {
+  for (let i = 0; i < values.length; i++) {
     // line += NODE_CHARS;
-    const value = values.shift();
+    const value = values[i];
 
     if (value) {
       line += SPACE_CHAR + value + SPACE_CHAR;
@@ -91,7 +139,7 @@ function logTreeLevelCharacters(values, height) {
       line += SPACE_CHAR.repeat(3);
     }
 
-    if (values.length > 0) {
+    if (i < values.length - 1) {
       line += SPACE_CHAR.repeat(betweenSpacing);
     }
   }
@@ -100,22 +148,14 @@ function logTreeLevelCharacters(values, height) {
 }
 
 function logTreeLevelConnectors(values, height) {
-  const SPACE_CHAR = " ";
-  const CHILDREN_LINE_CHAR = "┴";
-  const LINE_CHAR = "─";
-  const LEFT_END_CHAR = "┌";
-  const RIGHT_END_CHAR = "┐";
-
   const spacing = 2 ** height - 1;
 
   let line = "";
   line += SPACE_CHAR.repeat(spacing);
 
-  while (values.length > 1) {
-    // This condition is for >1 instead of >0 for safety because it shifts two items at a time,
-    // though the values queue should always have an even number of elements
-    const leftValue = values.shift();
-    const rightValue = values.shift();
+  for (let i = 0; i < values.length; i += 2) {
+    const leftValue = values[i];
+    const rightValue = values[i + 1];
 
     // each if...else will generate (spacing * 2 + 3) characters
     if (leftValue && rightValue) {
@@ -138,7 +178,7 @@ function logTreeLevelConnectors(values, height) {
       line += SPACE_CHAR.repeat(spacing * 2 + 3);
     }
 
-    if (values.length > 0) {
+    if (i < values.length - 2) {
       line += SPACE_CHAR.repeat(spacing * 2 + 1);
     }
   }

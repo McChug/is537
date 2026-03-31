@@ -65,3 +65,11 @@ After solving this, I found some creative solutions online that worked more effe
 I started this problem by writing a regular getHeight() function, and then I added my check on each left_height and right_height calculation I did to make sure they were balanced. It took me a lot of thinking to come up with a solution for what to return in that base case, though. I tried adding another parameter called balanced that held a boolean but realized that it would never be read if I only changed it after making my recursive calls.
 
 Finally, I settled on a hacky solution of returning -100 when the tree was out of balance, and then I ended my function by checking whether the result of getBalancedHeight() was greater than 0. This passed all of LeetCode 110's cases and worked in O(N) time, but I wasn't happy with the hacky solution. I went online and saw that a more sophisticated solution just added checks to see if the left and right heights were also -1 before returning -1. I implemented this by only changing a couple lines of code.
+
+### 12. Search 2D Matrix
+
+This was a great problem to help me test my intuition of binary searches and O(log(N)) algorithms. My initial thought was that I could just run two simple binary searches (one to find which row the possible target was in and one to search that row for the target) back-to-back and it would immediately give back my answer, but I realized this problem was a little more complicated. Because the first binary search was targeting a range rather than a specific integer value, the logic was quite a bit different.
+
+My biggest realization while solving this problem was that I could use the `n` value (row length) in order to check the highest value of any given row, instead of just checking the lowest at `0`. This meant that instead of the three outcomes of `==`, `>`, or `<` that I would normally check in a binary search, I should only check `>` for the smallest value of a row, only check `<` for the largest value of a row, and then I would be left with one more outcome that would mean I had found the row that I needed to search.
+
+After getting that first part right, the second step was just implementing a regular binary search on the row.
