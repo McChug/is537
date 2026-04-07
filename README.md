@@ -73,3 +73,17 @@ This was a great problem to help me test my intuition of binary searches and O(l
 My biggest realization while solving this problem was that I could use the `n` value (row length) in order to check the highest value of any given row, instead of just checking the lowest at `0`. This meant that instead of the three outcomes of `==`, `>`, or `<` that I would normally check in a binary search, I should only check `>` for the smallest value of a row, only check `<` for the largest value of a row, and then I would be left with one more outcome that would mean I had found the row that I needed to search.
 
 After getting that first part right, the second step was just implementing a regular binary search on the row.
+
+### 13. Spiral Matrix
+
+This problem was LeetCode 54 and coming up with the algorithm reminded me of some of the techniques that I learned while working on my solution for rotating a matrix a few months ago. I immediately thought to include an offset for each side (top, right, bottom, left) and increment those after looping through them.
+
+The basic structure of my function came quickly, but it took a lot of testing and then retesting in order to get rid of all of my off-by-one errors in the loops. By the time it was working my function got a little messy, so I'd like to clean it up at some point, but I'm happy that it worked.
+
+It's hard to tell the Big O from the code because everything operates within a `while True` loop with a chance to `break` after each step, but the time complexity is O(N) since it will reach every item within every subarray once. The space complexity is also linear because I declare a separate result array, but that is the only thing taking up variable space.
+
+### 14. Word Search
+
+This was LeetCode 79 and I wanted to try it since it had the Depth-First Search tag. The method for solving seemed immediately obvious, and I thought that if I just looped through every item in the matrix until finding one with a value that matched the first item in the target string, I could start a DFS run from there. My intuition was correct, but in order to get this passing all the test cases, I spent a lot of time refining how the algorithm worked. The biggest hold up that took me a while to figure out was when to remove an item from the `current_path` set, but once I finally got that, everything came together.
+
+The time complexity for my algorithm is O(m _ n _ 4^L), if L is the length of the target `word`. This is because I iterate over every item in the board input (making up the O(m \* n)), and then I run the DFS where there are a max of 4 recursive calls to make for each item I explore until I have reached the depth of the target word. Because I use a set for the `current_path`, lookups happen in O(1).
