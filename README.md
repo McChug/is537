@@ -22,7 +22,7 @@
 
 This repository contains a collection of personal coding challenges I have completed (largely in the form of LeetCode problems or similar types of coding challenges).
 
-This document covers 15 challenges I wanted to share. I completed each of these using without looking anything up online besides syntax and without LLM help. Sometimes I'd step away from a problem for some time and come back later with a fresh mind, but I'm proud to know that everything in here is my work and represents my growth in learning to problem solve.
+This document covers 15 challenges I wanted to share. I completed each of these with minimal online searches and without LLM help. Sometimes I'd step away from a problem for some time and come back later with a fresh mind, but I'm proud to know that everything in here is my work and represents my growth in learning to problem solve.
 
 Most code was written in Python because I have worked less in Python than JavaScript and wanted practice writing better Python.
 
